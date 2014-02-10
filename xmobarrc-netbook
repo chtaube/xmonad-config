@@ -1,0 +1,25 @@
+Config { font = "-misc-fixed-medium-r-condensed-*-13-120-75-75-c-60-iso10646-1"
+       , bgColor = "#222222"
+       , fgColor = "grey"
+       , lowerOnStart = True
+       , position = TopW L 90
+       , commands = [ Run Weather "EDDL" ["-t","<tempC>°C","-L","64","-H","77","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run BatteryP ["BAT0"]
+                        ["-t", "Ba:<watts><left>%<acstatus>",
+                        "-L","20", "-H","50", "-p","3",
+                        "--low","#ffb6b0",
+                        "--normal","#ffff7f",
+                        "--high","grey",
+                        "--",
+                        "-f", "ACAD/online",
+                        "-O","<fc=#ceffac>+</fc>", "-o",""] 50
+                    , Run MultiCpu ["-t", "Ld: <total>%","-L","15","-H","50","--normal","#ceffac","--high","#ffb6b0","-w","5"] 10
+                    , Run Memory ["-t","Me: <usedratio>%","-L","50","-H","80","--normal","#ffff7f","--high","#ffb6b0"] 10
+                    , Run Swap ["-t", "Sw: <usedratio>%"] 10
+                    , Run Date "w%W %a %b %_d %k:%M" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %multicpu%  %battery% | %memory%  %swap%   <fc=#ffffcc>%date%</fc>   %EDDL%"
+       }
