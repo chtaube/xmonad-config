@@ -1,4 +1,4 @@
--- xmonad config used by Christian Taube
+-- xmonad config used by Christian Taube <chtaube@chtaube.eu>
 -- http://chtau.be/xmonad
 --
 -- This configuration is in use on Debian Linux, Arch Linux and FreeBSD
